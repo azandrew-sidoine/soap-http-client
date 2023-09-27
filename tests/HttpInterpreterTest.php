@@ -14,7 +14,7 @@ declare(strict_types=1);
 use Drewlabs\Soap\Contracts\RequestInterface as ContractsRequestInterface;
 use Drewlabs\Soap\DefaultSoapRequest;
 use Drewlabs\Soap\Http\HttpInterpreter;
-use Drewlabs\Soap\Psr7\RequestBuilder;
+use Drewlabs\Soap\Http\RequestBuilder;
 use Drewlabs\Soap\SoapInterpreter;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -83,9 +83,8 @@ class HttpInterpreterTest extends TestCase
         $stream->expects($this->once())
             ->method('write')
             ->with($request->body())
-            ->willReturn(null);
-        $stream->method('rewind')
-            ->willReturn(null);
+            ->willReturn(strlen($request->body()));
+        $stream->method('rewind');
         $stream->expects($this->once())
             ->method('__toString')
             // TODO : Add SOAP string body

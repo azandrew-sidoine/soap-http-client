@@ -15,7 +15,6 @@ namespace Drewlabs\Soap\Http;
 
 use Drewlabs\Soap\Contracts\HttpInterpreterInterface;
 use Drewlabs\Soap\Exceptions\SoapRequestException;
-use Drewlabs\Soap\Psr7\RequestBuilder as Psr7RequestBuilder;
 use Drewlabs\Soap\SoapInterpreter;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\StreamFactoryInterface;
@@ -27,7 +26,7 @@ class HttpInterpreter implements HttpInterpreterInterface
      */
     private $interpreter;
     /**
-     * @var Psr7RequestBuilder
+     * @var RequestBuilder
      */
     private $builder;
     /**
@@ -35,10 +34,7 @@ class HttpInterpreter implements HttpInterpreterInterface
      */
     private $streamFactory;
 
-    /**
-     * @return void
-     */
-    public function __construct(SoapInterpreter $interpreter, Psr7RequestBuilder $builder, StreamFactoryInterface $streamFactory)
+    public function __construct(SoapInterpreter $interpreter, RequestBuilder $builder, StreamFactoryInterface $streamFactory)
     {
         $this->interpreter = $interpreter;
         $this->builder = $builder;

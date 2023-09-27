@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace Drewlabs\Soap\Psr7;
+namespace Drewlabs\Soap\Http;
 
 use Drewlabs\Soap\Exceptions\SoapRequestException;
 use Psr\Http\Message\RequestFactoryInterface;

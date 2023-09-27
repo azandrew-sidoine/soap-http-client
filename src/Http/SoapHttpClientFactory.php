@@ -17,7 +17,6 @@ use function Drewlabs\Async\Future\async;
 use function Drewlabs\Async\Future\fulfilled;
 
 use Drewlabs\Soap\Contracts\SoapHttpClientInterface as SoapClientInterface;
-use Drewlabs\Soap\Psr7\RequestBuilder;
 use Drewlabs\Soap\SoapClient;
 use Drewlabs\Soap\SoapInterpreter;
 use Psr\Http\Client\ClientInterface;

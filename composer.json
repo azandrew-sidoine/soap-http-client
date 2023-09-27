@@ -1,6 +1,11 @@
 {
     "name": "drewlabs/soap-client",
-    "description": "Simple SOAP HTTP client implementation",
+    "description": "SOAP HTTP Client implementation",
+    "keywords": [
+        "SOAP",
+        "HTTP",
+        "Client"
+    ],
     "type": "library",
     "require-dev": {
         "phpunit/phpunit": ">=9"
@@ -30,7 +35,6 @@
     },
     "require": {
         "drewlabs/async": "^0.1.4",
-        "drewlabs/psr7": "^0.1.4",
         "psr/http-client": "^1.0",
         "psr/http-factory": "^1.0|^2.0",
         "psr/http-message": "^1.0|^2.0"
