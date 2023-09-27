@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+AzLab\'s
+2023-09-21
+Let users retrieve a stock price for a given product
+
+Online WSDL 1.1 SOAP generator 0.2
+Julien Blitte
+ -->
+<definitions name="Let users retrieve a stock price for a given product"
+	targetNamespace="xyz.azlabs.wsdl"
+	xmlns:tns="xyz.azlabs.wsdl"
+	xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsd1="xyz.azlabs.xsd"
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns="http://schemas.xmlsoap.org/wsdl/">
+	<!-- definition of datatypes -->
+	<types>
+		<schema targetNamespace="xyz.azlabs.xsd" xmlns="http://www.w3.org/2000/10/XMLSchema">
+			<element name="name">
+				<complexType>
+					<all>
+						<element name="value" type="string" />
+					</all>
+				</complexType>
+			</element>
+			<element name="price">
+				<complexType>
+					<all>
+						<element name="value" type="float" />
+					</all>
+				</complexType>
+			</element>
+		</schema>
+	</types>
+	<!-- response messages -->
+	<message name='returns_price'>
+		<part name='price' type='xsd:price' />
+	</message>
+	<!-- request messages -->
+	<message name='getStockPrice'>
+		<part name='name' type='xsd:name' />
+	</message>
+	<!-- server's services -->
+	<portType name='Stock Prices'>
+		<operation name='getStockPrice'>
+			<input message='tns:getStockPrice' />
+			<output message='tns:returns_price' />
+		</operation>
+	</portType>
+	<!-- server encoding -->
+	<binding name='Stock Prices_webservices' type='tns:Stock Prices'>
+		<soap:binding style='rpc' transport='http://schemas.xmlsoap.org/soap/http' />
+		<operation name='getStockPrice'>
+			<soap:operation soapAction='urn:xmethods-delayed-quotes#getStockPrice' />
+			<input>
+				<soap:body use='encoded' namespace='urn:xmethods-delayed-quotes'
+					encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+			</input>
+			<output>
+				<soap:body use='encoded' namespace='urn:xmethods-delayed-quotes'
+					encodingStyle='http://schemas.xmlsoap.org/soap/encoding/' />
+			</output>
+		</operation>
+	</binding>
+	<!-- access to service provider -->
+	<service name='production'>
+		<port name='production_0' binding='Stock Prices_webservices'>
+			<soap:address location='http://127.0.0.1/api/v1/stock-price' />
+		</port>
+	</service>
+</definitions>
