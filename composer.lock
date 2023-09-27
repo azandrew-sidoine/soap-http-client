@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cba6d99e9d6cc1c57b873002edce4ac7",
+    "content-hash": "70597bc6b7ec59ebe06ffe59c79673f3",
     "packages": [
         {
             "name": "drewlabs/async",
