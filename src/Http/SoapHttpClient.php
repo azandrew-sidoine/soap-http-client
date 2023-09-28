@@ -68,6 +68,8 @@ class SoapHttpClient implements SoapHttpClientInterface
                 /** @var HttpInterpreterInterface $http */
                 $http = await($this->promise);
                 $request = $http->request($name, $arguments, $options, $inputHeaders);
+
+                // yield the start of an IO operation
                 yield;
                 $response = $this->client->sendRequest($request);
 

@@ -53,7 +53,9 @@ class SoapHttpClientFactory
     ) {
         $builder = new RequestBuilder($requestFactory, $streamFactory);
         $promise = $this->isValidHttpURI($wsdl) ? async(static function () use ($client, $wsdl, $streamFactory, $options, $builder, $soapRequestClass, $requestFactory) {
-            $response = (yield $client->sendRequest($requestFactory->createRequest('GET', $wsdl)));
+            // yield the start of an IO operation
+            yield;
+            $response = $client->sendRequest($requestFactory->createRequest('GET', $wsdl));
             $interpreter = new SoapInterpreter(new SoapClient('data://text/plain;base64,'.base64_encode($response->getBody()->__toString()), $options), $soapRequestClass);
 
             return new HttpInterpreter($interpreter, $builder, $streamFactory);
